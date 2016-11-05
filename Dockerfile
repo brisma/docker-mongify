@@ -10,9 +10,9 @@ RUN apk --no-cache add mariadb-dev build-base && \
     gem install mongo -v 1.10.2 && \
     gem install mysql2 -v 0.3.21 && \
     gem install mongify -v 1.3.0 && \
+    gem install mongify-mongoid -v 1.0.4 && \
     apk del build-base
 
 RUN mkdir -p /mongify
 WORKDIR /mongify
-ENTRYPOINT ["mongify"]
-CMD ["-h"]
+CMD ["mongify", "-h"]

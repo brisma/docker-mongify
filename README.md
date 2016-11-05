@@ -32,10 +32,10 @@ Put this file where you will launch the docker image.
 You can then start using Mongify running these commands:
 
 ```console
-$ docker run --rm -v "$PWD":/mongify/ -it brisma/mongify check database.config
-$ docker run --rm -v "$PWD":/mongify/ -it brisma/mongify translation database.config > translation.rb
-$ docker run --rm -v "$PWD":/mongify/ -it brisma/mongify process database.config translation.rb
-$ docker run --rm -v "$PWD":/mongify/ -it brisma/mongify sync database.config translation.rb
+$ docker run --rm -v "$PWD":/mongify/ -it brisma/mongify mongify check database.config
+$ docker run --rm -v "$PWD":/mongify/ -it brisma/mongify mongify translation database.config > translation.rb
+$ docker run --rm -v "$PWD":/mongify/ -it brisma/mongify mongify process database.config translation.rb
+$ docker run --rm -v "$PWD":/mongify/ -it brisma/mongify mongify sync database.config translation.rb
 ```
 
 Note that `$PWD` is the current folder where `database.config` is stored.
@@ -45,12 +45,21 @@ Note that `$PWD` is the current folder where `database.config` is stored.
 Using linked containers is pretty simple, just add `--link` flags as always like:
 
 ```console
-$ docker run --rm -it --link mysql --link mongo -v "$PWD":/mongify/ brisma/mongify check database.config
+$ docker run --rm -it --link mysql --link mongo -v "$PWD":/mongify/ brisma/mongify mongify check database.config
+```
+
+## Run Mongify Mongoid
+
+This image also include `mongify_mongoid`, an utility useful to generate `mongoid` models from mongify translation.
+You can use mongify_mongoid running this command:
+
+```console
+$ docker run --rm -it -v "$PWD":/mongify/ brisma/mongify mongify_mongoid translation.rb
 ```
 
 # Documentation
 
-The documentation of Mongify is provided by [Anlek Consulting](http://anlek.com/) at this  [address](http://mongify.com/getting_started.html).
+The documentation of Mongify is provided by [Anlek Consulting](http://anlek.com/) at this [address](http://mongify.com/getting_started.html).
 
 # Supported Docker versions
 
