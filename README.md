@@ -27,6 +27,8 @@ end
 
 Put this file where you will launch the docker image.
 
+## Run Mongify
+
 You can then start using Mongify running these commands:
 
 ```console
